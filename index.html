@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset='utf-8'>
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+
+    <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="stylesheets/pygment_trac.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="stylesheets/print.css" media="print">
+
+    <title>Bitcoin Regtest Node by Sigimera</title>
+  </head>
+
+  <body>
+
+    <header>
+      <div class="container">
+        <h1>Bitcoin Regtest Node</h1>
+        <h2>This repository contains instructions, with related helper code, that allows you to run your own blockchain locally.  Get started pretty fast and develop your own Bitcoin application.</h2>
+
+        <section id="downloads">
+          <a href="https://github.com/Sigimera/bitcoin-regtest-node/zipball/master" class="btn">Download as .zip</a>
+          <a href="https://github.com/Sigimera/bitcoin-regtest-node/tarball/master" class="btn">Download as .tar.gz</a>
+          <a href="https://github.com/Sigimera/bitcoin-regtest-node" class="btn btn-github"><span class="icon"></span>View on GitHub</a>
+        </section>
+      </div>
+    </header>
+
+    <div class="container">
+      <section id="main_content">
+        <h1>
+<a name="bitcoin-regtest-node" class="anchor" href="#bitcoin-regtest-node"><span class="octicon octicon-link"></span></a>bitcoin-regtest-node</h1>
+
+<p>This repository contains instructions, with related helper code, that allows you to run your own blockchain locally. Get started pretty fast and develop your own Bitcoin application.</p>
+
+<h2>
+<a name="quickstart" class="anchor" href="#quickstart"><span class="octicon octicon-link"></span></a>Quickstart</h2>
+
+<h3>
+<a name="installation" class="anchor" href="#installation"><span class="octicon octicon-link"></span></a>Installation</h3>
+
+<p>Installation of the official bitcoin core implementation from <a href="https://bitcoin.org/en/download">https://bitcoin.org/en/download</a></p>
+
+<pre><code>~$ BITCOIN_VERSION=0.9.3 # You may want to change that the current version.
+~$ wget https://bitcoin.org/bin/${BITCOIN_VERSION}/bitcoin-${BITCOIN_VERSION}-linux.tar.gz
+~$ tar xf bitcoin-${BITCOIN_VERSION}-linux.tar.gz
+# Change 64 to 32 for 32bit architecture
+~$ mv bitcoin-${BITCOIN_VERSION}-linux/bin/64/* /usr/local/bin 
+</code></pre>
+
+<h3>
+<a name="get-your-first-bitcoin" class="anchor" href="#get-your-first-bitcoin"><span class="octicon octicon-link"></span></a>Get your first Bitcoin</h3>
+
+<pre><code># For testing purpose we want verbose output
+~$ bitcoind -regtest -printtoconsole
+... # Lot of output here
+
+# Switch to new console and let the bitcoind running.
+# We generate 101 new blocks (starting from the genesis block),
+# in order to be able to access the first one and get 50 BTC.
+~$ bitcoind -regtest setgenerate 101
+... # Wait until all blocks are generated, ~1 minute
+~$ bitcoind -regtest getbalance
+50.00000000 # &lt;= You should see that or at least a number bigger then zero.
+</code></pre>
+
+<p><strong>Congratulations!</strong> You have now your first BTC that you can spent. </p>
+
+<p>Where to go from here? Please read further how to spent this BTC and how to make the whole a little bit more effective, with less typing and more automated.</p>
+
+<h3>
+<a name="preparing-your-working-environment" class="anchor" href="#preparing-your-working-environment"><span class="octicon octicon-link"></span></a>Preparing your working environment</h3>
+
+<pre><code># We don't want to type each time `bitcoind -regtest`.
+# The command `br` is easier to type and easy to remember (the beginning letters of the command).
+~$ echo 'alias br="bitcoind -regtest"' &gt;&gt; ~/.bashrc; source ~/.bashrc
+</code></pre>
+
+<h2>
+<a name="todo" class="anchor" href="#todo"><span class="octicon octicon-link"></span></a>TODO</h2>
+
+<ul>
+<li>Provide scripts that automate the whole node setup and spending process, e.g. by simulated random transfers.</li>
+<li>Explain how the blockchain could be stored in a SQL database and accessed via your application.</li>
+<li>Describe how the node can be virtualized with vagrant or docker.</li>
+</ul>
+
+<h2>
+<a name="help-this-project" class="anchor" href="#help-this-project"><span class="octicon octicon-link"></span></a>Help this project</h2>
+
+<p>Please help us to extend and improve this project.</p>
+
+<ol>
+<li>Fork it!</li>
+<li>Make your changes.</li>
+<li>Create a pull request.</li>
+</ol>
+
+<p>Please donate if you want to motivate us to improve this project even further.</p>
+
+<p>1LKzkn4CfktnSXDMNt856KqHcjMdTCp57S<br>
+If clicking on the line above does not work, use this payment info:<br>
+<strong>Pay to:</strong>  <code>1LKzkn4CfktnSXDMNt856KqHcjMdTCp57S</code> <br>
+<strong>Message:</strong> Donation for bitcoin-regtest-node open source project.</p>
+      </section>
+    </div>
+
+    
+  </body>
+</html>
