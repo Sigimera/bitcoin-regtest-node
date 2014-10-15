@@ -1,8 +1,31 @@
-# bitcoin-regtest-node #
+# Bitcoin Regtest Environment #
 
 This repository contains instructions, with related helper code, that allows you
 to run your own blockchain locally. Get started pretty fast and develop your
 own Bitcoin application.
+
+### Why this project?
+
+This collection of instructions, with related scripts, should help Bitcoin
+application developers. Instead of spending hours with setting up a testing
+environment, the developer can focus on her application. The created environment
+allows the complete testing of the Bitcoin part, without spending real money or
+delays. The environment is reproducible and different scenarios, e.g. collection
+of transactions in a predefined order, can be created, but also deleted again.
+
+In comparison with the testnet3 Bitcoin network, this environment is not
+dependent on external nodes. All happens locally and could be fully controlled
+by the developer.
+
+### Who should use this project?
+
+* **Bitcoin Application Develpers:** The main target audience are developers
+that need a deterministic and reproducible environment for Bitcoin application
+development and testing.
+* **People interested in how the Bitcoin blockchain works:** By running a
+complete blockchain locally, it is easy to play around with different scenarios
+and multiple nodes. It is not only a lot of fun, to play around with an own
+blockchain, but improves the understanding of how a decentralized ledger works.
 
 ## Getting Started ##
 
