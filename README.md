@@ -43,6 +43,7 @@ Where to go from here? Please read further how to spent this BTC and how to make
 
 * Provide scripts that automate the whole node setup and spending process, e.g. by simulated random transfers.
 * Explain how the blockchain could be stored in a SQL database and accessed via your application.
+* Describe how the node can be virtualized with vagrant or docker.
 
 ## Help this project ##
 
