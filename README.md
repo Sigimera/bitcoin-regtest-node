@@ -27,13 +27,7 @@ complete blockchain locally, it is easy to play around with different scenarios
 and multiple nodes. It is not only a lot of fun, to play around with an own
 blockchain, but improves the understanding of how a decentralized ledger works.
 
-## Getting Started ##
-
-### Quickstart ###
-
-*TODO: Add helper scripts and explain here to execute them and in what order.*
-
-### Manual Installation ###
+## Installation of Bitcoin Core ##
 
 Installation of the official bitcoin core implementation from
 https://bitcoin.org/en/download
@@ -44,7 +38,41 @@ https://bitcoin.org/en/download
     # Change 64 to 32 for 32bit architecture
     ~$ mv bitcoin-${BITCOIN_VERSION}-linux/bin/64/* /usr/local/bin
 
-### Get your first Bitcoin ###
+## Quickstart ##
+
+Setup your private blockchain in regtest mode and mine 50 BTC. In this
+version we assume that `bitcoind` is installed. Try `bitcoind help`. Future
+versions will install bitcoin-core automatically, if necessary.
+
+**Attention:** The previous blockchain, with related wallet, will be deleted!
+You can make a backup of the `~/.bitcoin/regtest` directory, if you want to
+keep a snapshot of the current version.
+
+    ~$ ./btc_node.sh bootstrap
+    # Alternative short command:
+    ~$ ./btc_node.sh b
+
+Simulate a random number of transactions to the given address (between 1 and 10),
+with a random BTC amount each time (between 0 and 1).
+
+    ~$ ./btc_node.sh simulate n44FXNKLPbqj3awCXDtNSZrrJonoX9NQsg
+    # Alternative short command:
+    ~$ ./btc_node.sh s n44FXNKLPbqj3awCXDtNSZrrJonoX9NQsg
+
+Simulate a fixed number of transactions to the given address,
+with a random amount each time (between 0 and 1).
+
+In the example below, `100` transactions with a random amount between 0 and 1
+BTC are send to `n44FXNKLPbqj3awCXDtNSZrrJonoX9NQsg`
+
+    ~$ ./btc_node.sh simulate n44FXNKLPbqj3awCXDtNSZrrJonoX9NQsg 100
+    # Alternative short command:
+    ~$ ./btc_node.sh s n44FXNKLPbqj3awCXDtNSZrrJonoX9NQsg 100
+
+Each collection of transactions is confirmed¸ at the end of the command, by
+creating a new block
+
+## Manual Interaction ##
 
     # For testing purpose we want verbose output
     ~$ bitcoind -regtest -printtoconsole
@@ -64,31 +92,31 @@ and get 50 BTC.
 Where to go from here? Please read further how to spent this BTC and how to make
  the whole a little bit more effective, with less typing and more automated.
 
-### Preparing your working environment ###
+## Preparing your working environment ##
 
-    # We don't want to type each time `bitcoind -regtest`.
-    # The command `br` is easier to type and easy to remember (the beginning letters of the command).
+We don't want to type each time `bitcoind -regtest`. The command `br` is easier
+to type and easy to remember: The beginning letters of the command.
+
     ~$ echo 'alias br="bitcoind -regtest"' >> ~/.bashrc; source ~/.bashrc
+    ~$ br getbalance
 
 
 ## TODO ##
 
-* [AUTOMATION] Provide scripts that automate the whole node setup and spending
-process, e.g.by simulated random transfers.
+* [INSTALLATION] If bitcoind is not found, install it automatically.
+* [SECURITY] Add the signature file, of bitcoin-core, to this repository and
+explain how to check it and/or check it automatically during installation.
+* ~~[AUTOMATION] Provide scripts that automate the whole node setup and spending
+process, e.g.by simulated random transfers.~~
 * [FEATURE] Explain how the blockchain could be stored in a SQL database and
 accessed via your application.
 * [PORTABILITY] Describe how the node can be virtualized with vagrant or docker.
 Provide also the related scripts and configuration files.
-* [SECURITY] Add the signature file, of bitcoin-core, to this repository and
-explain how to check it.
 
 ## Screenshots ##
 
-The script, that produces the following output, will be provided shortly. It
-shutdowns a previous running bitcoind instance, deletes the old regtest
-blockchain, creates a new one and mines 101 blocks, in order to get 50 BTC.
-
-<img src="https://raw.githubusercontent.com/Sigimera/bitcoin-regtest-node/master/screenshots/script_fresh_regtest_start.png">
+<img src="https://raw.githubusercontent.com/Sigimera/bitcoin-regtest-node/master/screenshots/btc_node_bootstrap.png">
+<img src="https://raw.githubusercontent.com/Sigimera/bitcoin-regtest-node/master/screenshots/btc_node_simulate.png">
 
 ## Support this project ##
 
