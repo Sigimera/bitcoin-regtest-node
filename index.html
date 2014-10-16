@@ -75,15 +75,7 @@ blockchain, but improves the understanding of how a decentralized ledger works.<
 </ul>
 
 <h2>
-<a name="getting-started" class="anchor" href="#getting-started"><span class="octicon octicon-link"></span></a>Getting Started</h2>
-
-<h3>
-<a name="quickstart" class="anchor" href="#quickstart"><span class="octicon octicon-link"></span></a>Quickstart</h3>
-
-<p><em>TODO: Add helper scripts and explain here to execute them and in what order.</em></p>
-
-<h3>
-<a name="manual-installation" class="anchor" href="#manual-installation"><span class="octicon octicon-link"></span></a>Manual Installation</h3>
+<a name="installation-of-bitcoin-core" class="anchor" href="#installation-of-bitcoin-core"><span class="octicon octicon-link"></span></a>Installation of Bitcoin Core</h2>
 
 <p>Installation of the official bitcoin core implementation from
 <a href="https://bitcoin.org/en/download">https://bitcoin.org/en/download</a></p>
@@ -95,8 +87,46 @@ blockchain, but improves the understanding of how a decentralized ledger works.<
 ~$ mv bitcoin-${BITCOIN_VERSION}-linux/bin/64/* /usr/local/bin
 </code></pre>
 
-<h3>
-<a name="get-your-first-bitcoin" class="anchor" href="#get-your-first-bitcoin"><span class="octicon octicon-link"></span></a>Get your first Bitcoin</h3>
+<h2>
+<a name="quickstart" class="anchor" href="#quickstart"><span class="octicon octicon-link"></span></a>Quickstart</h2>
+
+<p>Setup your private blockchain in regtest mode and mine 50 BTC. In this
+version we assume that <code>bitcoind</code> is installed. Try <code>bitcoind help</code>. Future
+versions will install bitcoin-core automatically, if necessary.</p>
+
+<p><strong>Attention:</strong> The previous blockchain, with related wallet, will be deleted!
+You can make a backup of the <code>~/.bitcoin/regtest</code> directory, if you want to
+keep a snapshot of the current version.</p>
+
+<pre><code>~$ ./btc_node.sh bootstrap
+# Alternative short command:
+~$ ./btc_node.sh b
+</code></pre>
+
+<p>Simulate a random number of transactions to the given address (between 1 and 10),
+with a random BTC amount each time (between 0 and 1).</p>
+
+<pre><code>~$ ./btc_node.sh simulate n44FXNKLPbqj3awCXDtNSZrrJonoX9NQsg
+# Alternative short command:
+~$ ./btc_node.sh s n44FXNKLPbqj3awCXDtNSZrrJonoX9NQsg
+</code></pre>
+
+<p>Simulate a fixed number of transactions to the given address,
+with a random amount each time (between 0 and 1).</p>
+
+<p>In the example below, <code>100</code> transactions with a random amount between 0 and 1
+BTC are send to <code>n44FXNKLPbqj3awCXDtNSZrrJonoX9NQsg</code></p>
+
+<pre><code>~$ ./btc_node.sh simulate n44FXNKLPbqj3awCXDtNSZrrJonoX9NQsg 100
+# Alternative short command:
+~$ ./btc_node.sh s n44FXNKLPbqj3awCXDtNSZrrJonoX9NQsg 100
+</code></pre>
+
+<p>Each collection of transactions is confirmed¸ at the end of the command, by
+creating a new block</p>
+
+<h2>
+<a name="manual-interaction" class="anchor" href="#manual-interaction"><span class="octicon octicon-link"></span></a>Manual Interaction</h2>
 
 <pre><code># For testing purpose we want verbose output
 ~$ bitcoind -regtest -printtoconsole
@@ -118,36 +148,36 @@ and get 50 BTC.</p>
 <p>Where to go from here? Please read further how to spent this BTC and how to make
  the whole a little bit more effective, with less typing and more automated.</p>
 
-<h3>
-<a name="preparing-your-working-environment" class="anchor" href="#preparing-your-working-environment"><span class="octicon octicon-link"></span></a>Preparing your working environment</h3>
+<h2>
+<a name="preparing-your-working-environment" class="anchor" href="#preparing-your-working-environment"><span class="octicon octicon-link"></span></a>Preparing your working environment</h2>
 
-<pre><code># We don't want to type each time `bitcoind -regtest`.
-# The command `br` is easier to type and easy to remember (the beginning letters of the command).
-~$ echo 'alias br="bitcoind -regtest"' &gt;&gt; ~/.bashrc; source ~/.bashrc
+<p>We don't want to type each time <code>bitcoind -regtest</code>. The command <code>br</code> is easier
+to type and easy to remember: The beginning letters of the command.</p>
+
+<pre><code>~$ echo 'alias br="bitcoind -regtest"' &gt;&gt; ~/.bashrc; source ~/.bashrc
+~$ br getbalance
 </code></pre>
 
 <h2>
 <a name="todo" class="anchor" href="#todo"><span class="octicon octicon-link"></span></a>TODO</h2>
 
 <ul>
-<li>[AUTOMATION] Provide scripts that automate the whole node setup and spending
-process, e.g.by simulated random transfers.</li>
+<li>[INSTALLATION] If bitcoind is not found, install it automatically.</li>
+<li>[SECURITY] Add the signature file, of bitcoin-core, to this repository and
+explain how to check it and/or check it automatically during installation.</li>
+<li><del>[AUTOMATION] Provide scripts that automate the whole node setup and spending
+process, e.g.by simulated random transfers.</del></li>
 <li>[FEATURE] Explain how the blockchain could be stored in a SQL database and
 accessed via your application.</li>
 <li>[PORTABILITY] Describe how the node can be virtualized with vagrant or docker.
 Provide also the related scripts and configuration files.</li>
-<li>[SECURITY] Add the signature file, of bitcoin-core, to this repository and
-explain how to check it.</li>
 </ul>
 
 <h2>
 <a name="screenshots" class="anchor" href="#screenshots"><span class="octicon octicon-link"></span></a>Screenshots</h2>
 
-<p>The script, that produces the following output, will be provided shortly. It
-shutdowns a previous running bitcoind instance, deletes the old regtest
-blockchain, creates a new one and mines 101 blocks, in order to get 50 BTC.</p>
-
-<p><img src="https://raw.githubusercontent.com/Sigimera/bitcoin-regtest-node/master/screenshots/script_fresh_regtest_start.png"></p>
+<p><img src="https://raw.githubusercontent.com/Sigimera/bitcoin-regtest-node/master/screenshots/btc_node_bootstrap.png">
+<img src="https://raw.githubusercontent.com/Sigimera/bitcoin-regtest-node/master/screenshots/btc_node_simulate.png"></p>
 
 <h2>
 <a name="support-this-project" class="anchor" href="#support-this-project"><span class="octicon octicon-link"></span></a>Support this project</h2>
