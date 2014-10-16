@@ -11,7 +11,6 @@ LOG_FILE="/tmp/bitcoind.log"
 PID_FILE="/tmp/bitcoind.pid"
 
 REGTEST_DIR="${HOME}/.bitcoin/regtest/"
-DB_NAME="regtest"
 
 DIR="$(cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 LIB_DIR=${DIR}/lib
