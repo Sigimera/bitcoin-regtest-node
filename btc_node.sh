@@ -23,9 +23,11 @@ source ${LIB_DIR}/bitcoind.sh
 source ${LIB_DIR}/spending.sh
 
 function cmd_help() {
-      echocyan "USAGE: $0 COMMAND";echo;echo
-      echocyan " [b|bootstrap]        ... Initialize a new private blockchain (regtest) and mine first 50 BTC.";echo
-      echocyan " [s|simulate] <addr>  ... Transfer a random amount of money in a random amount of transactions to the address <addr>.";echo
+  echocyan "USAGE: $0 COMMAND";echo;echo
+  echocyan "COMMAND";echo
+  echocyan "[b|bootstrap]        ... Initialize a new private blockchain (regtest) and mine first 50 BTC.";echo
+  echocyan "[s|simulate] <addr>  ... Transfer a random amount of money in a random amount of transactions to the address <addr>.";echo
+  echocyan "[m|mine]             ... Mine one block and include all transactions that are currently in the memory pool, if possible.";echo
 }
 
 case "$1" in
