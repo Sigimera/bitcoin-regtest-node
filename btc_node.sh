@@ -35,6 +35,9 @@ case "$1" in
       startBitcoind
       miningFirstBTC
     ;;
+    m|mine)
+      generateBlock
+    ;;
     s|simulate)
       if [ -z "$2" ]; then
         cmd_help; exit

@@ -70,7 +70,12 @@ BTC are send to `n44FXNKLPbqj3awCXDtNSZrrJonoX9NQsg`
     ~$ ./btc_node.sh s n44FXNKLPbqj3awCXDtNSZrrJonoX9NQsg 100
 
 Each collection of transactions is confirmed¸ at the end of the command, by
-creating a new block
+creating a new block. For manual mining of one block, use the following
+command.
+
+    ~$ ./btc_node.sh mine
+    # Alternative short command:
+    ~$ ./btc_node.sh m
 
 ## Manual Interaction ##
 
