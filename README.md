@@ -82,6 +82,27 @@ command.
     # For testing purpose we want verbose output
     ~$ bitcoind -regtest -printtoconsole
     ...
+    
+----
+**If you have a systemd compatible system:**
+
+    # File: /etc/systemd/system/bitcoind-regtest.service
+    [Service]
+    ExecStart=/usr/bin/bitcoind -regtest -printtoconsole -externalip=127.0.0.1
+    Restart=always
+    User=YOUR_USERNAME
+    Group=YOUR_GROUPNAME
+
+Change the User and Group field to your username. This is important to guarantee that all data is stored under ~/.bitcoin/regtest. Normally the group name is the same as your user name. The *Restart=always* options assures that the daemon keeps running and restarts after crash or forced stop via kill.
+
+With the following two commands we start the daemon and constantly print the output.
+
+    ~$ sudo systemctl start bitcoind-regtest
+    ~$ sudo journalctl -xn -f -u bitcoind-regtest
+
+----
+
+**For all:**
 
 Switch to new console and let the bitcoind running. We generate 101 new blocks
 (starting from the genesis block), in order to be able to access the first one
