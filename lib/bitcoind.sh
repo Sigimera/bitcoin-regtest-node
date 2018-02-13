@@ -29,6 +29,7 @@ function purgingBlockchain() {
 # Starting a fresh bitcoin daemon instance
 ######################################
 function startBitcoind() {
+  ${BR_START} &
   ${BR} ${BR_OPTS} &> ${LOG_FILE} &
   echo $! > ${PID_FILE}
 
@@ -45,7 +46,7 @@ function startBitcoind() {
 ######################################
 function miningFirstBTC() {
   echocyan "[MINING] Mining Bitcoin. Please be patient for ~1 minute"; echo
-  ${BR} setgenerate true 101
+  ${BR} generate 101
 
   BALANCE=$(${BR} getbalance)
   echocyan "[WALLET] Your current balance: \e[1m\e[7m${BALANCE} BTC\e[0m"; echo

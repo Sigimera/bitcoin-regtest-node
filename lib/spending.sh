@@ -22,11 +22,11 @@ function donateRandomAmount() {
 
 function generateBlock() {
   echocyan "[INFO] Generating new block!"; echo
-  ${BR} setgenerate true
+  ${BR} generate 1
 
   blk_hash=$(${BR} getbestblockhash)
   blk=$(${BR} getblock $blk_hash)
-  txsize=$(ruby -rjson -e "puts JSON.parse('$blk')['tx'].size")
+  txsize=$(ruby -rjson -e "puts JSON.parse('$blk')['tx'].size") 
   echocyan "\t|-> Block Hash: ${blk_hash}";echo
   echocyan "\t|-> TRX Number: ${txsize}";echo
 }
@@ -39,4 +39,3 @@ function showWalletBalance() {
 function randomInteger() {
   echo $((RANDOM%10+1))
 }
-

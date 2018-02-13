@@ -2,7 +2,9 @@
 ######################################
 # Configuration
 ######################################
-BR="bitcoind -regtest"
+BR_START="bitcoind -regtest -daemon"
+BR_STOP="bitcoin-cli -regtest stop"
+BR="bitcoin-cli -regtest"
 BR_OPTS="-printtoconsole -externalip=127.0.0.1"
 
 SLEEP_TIME=7

@@ -32,16 +32,16 @@ blockchain, but improves the understanding of how a decentralized ledger works.
 Installation of the official bitcoin core implementation from
 https://bitcoin.org/en/download
 
-    ~$ BITCOIN_VERSION=0.9.3 # You may want to change this value to the current version.
-    ~$ wget https://bitcoin.org/bin/${BITCOIN_VERSION}/bitcoin-${BITCOIN_VERSION}-linux.tar.gz
-    ~$ tar xf bitcoin-${BITCOIN_VERSION}-linux.tar.gz
+    ~$ BITCOIN_VERSION=0.15.1 # You may want to change this value to the current version.
+    ~$ wget https://bitcoin.org/bin/bitcoin-core-${BITCOIN_VERSION}/bitcoin-${BITCOIN_VERSION}-x86_64-linux-gnu.tar.gz    
+    ~$ tar xf bitcoin-${BITCOIN_VERSION}-x86_64-linux-gnu.tar.gz    
     # Change 64 to 32 for 32bit architecture
-    ~$ mv bitcoin-${BITCOIN_VERSION}-linux/bin/64/* /usr/local/bin
+    ~$ mv bitcoin-${BITCOIN_VERSION}-linux/bin/* /usr/local/bin
 
 ## Quickstart ##
 
 Setup your private blockchain in regtest mode and mine 50 BTC. In this
-version we assume that `bitcoind` is installed. Try `bitcoind help`. Future
+version we assume that `bitcoind` is installed. Try `bitcoin-cli -help`. Future
 versions will install bitcoin-core automatically, if necessary.
 
 **Attention:** The previous blockchain, with related wallet, will be deleted!
@@ -108,9 +108,9 @@ Switch to new console and let the bitcoind running. We generate 101 new blocks
 (starting from the genesis block), in order to be able to access the first one
 and get 50 BTC.
 
-    ~$ bitcoind -regtest setgenerate 101
+    ~$ bitcoin-cli -regtest generate 101
     ... # Wait until all blocks are generated, ~1 minute
-    ~$ bitcoind -regtest getbalance
+    ~$ bitcoin-cli -regtest getbalance
     50.00000000 # <= You should see that or at least a number bigger then zero.
 
 **Congratulations!** You have now your first BTC that you can spent.
@@ -120,10 +120,10 @@ Where to go from here? Please read further how to spent this BTC and how to make
 
 ## Preparing your working environment ##
 
-We don't want to type each time `bitcoind -regtest`. The command `br` is easier
+We don't want to type each time `bitcoin-cli -regtest`. The command `br` is easier
 to type and easy to remember: The beginning letters of the command.
 
-    ~$ echo 'alias br="bitcoind -regtest"' >> ~/.bashrc; source ~/.bashrc
+    ~$ echo 'alias br="bitcoin-cli -regtest"' >> ~/.bashrc; source ~/.bashrc
     ~$ br getbalance
 
 
