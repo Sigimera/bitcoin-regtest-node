@@ -41,7 +41,7 @@ https://bitcoin.org/en/download
 ## Quickstart ##
 
 Setup your private blockchain in regtest mode and mine 50 BTC. In this
-version we assume that `bitcoind` is installed. Try `bitcoind help`. Future
+version we assume that `bitcoind` is installed. Try `bitcoin-cli -help`. Future
 versions will install bitcoin-core automatically, if necessary.
 
 **Attention:** The previous blockchain, with related wallet, will be deleted!
