@@ -29,7 +29,6 @@ function purgingBlockchain() {
 # Starting a fresh bitcoin daemon instance
 ######################################
 function startBitcoind() {
-  ${BR_STOP} &
   ${BR_START} &
   ${BR} ${BR_OPTS} &> ${LOG_FILE} &
   echo $! > ${PID_FILE}
