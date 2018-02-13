@@ -23,4 +23,3 @@ function echoyellow() {
 function echocyan() {
   echo -n $(__colortext "$1" "36")
 }
-
