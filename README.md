@@ -108,9 +108,9 @@ Switch to new console and let the bitcoind running. We generate 101 new blocks
 (starting from the genesis block), in order to be able to access the first one
 and get 50 BTC.
 
-    ~$ bitcoind -regtest setgenerate 101
+    ~$ bitcoin-cli -regtest generate 101
     ... # Wait until all blocks are generated, ~1 minute
-    ~$ bitcoind -regtest getbalance
+    ~$ bitcoin-cli -regtest getbalance
     50.00000000 # <= You should see that or at least a number bigger then zero.
 
 **Congratulations!** You have now your first BTC that you can spent.
@@ -120,10 +120,10 @@ Where to go from here? Please read further how to spent this BTC and how to make
 
 ## Preparing your working environment ##
 
-We don't want to type each time `bitcoind -regtest`. The command `br` is easier
+We don't want to type each time `bitcoin-cli -regtest`. The command `br` is easier
 to type and easy to remember: The beginning letters of the command.
 
-    ~$ echo 'alias br="bitcoind -regtest"' >> ~/.bashrc; source ~/.bashrc
+    ~$ echo 'alias br="bitcoin-cli -regtest"' >> ~/.bashrc; source ~/.bashrc
     ~$ br getbalance
 
 
